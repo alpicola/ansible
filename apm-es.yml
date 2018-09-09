@@ -1,0 +1,15 @@
+---
+- hosts: apm-es
+  become: yes
+  vars:
+    mackerel_agent_apikey: your_api_key 
+    mackerel_use_plugins: yes
+    mackerel_agent_plugins:
+      elasticsearch: mackerel-plugin-elasticsearch
+      linux: mackerel-plugin-linux
+  roles:
+  - base
+  - elasticsearch
+  - kibana
+  - apm-server
+  - mackerelio.mackerel-agent

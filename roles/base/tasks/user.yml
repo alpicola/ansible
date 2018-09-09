@@ -1,0 +1,9 @@
+---
+- name: Create user
+  user: name=alpicola createhome=yes
+
+- name: Allow user to sudo
+  lineinfile: path=/etc/sudoers line="alpicola ALL=(ALL) NOPASSWD:ALL"
+
+- name: Add authorized_keys
+  authorized_key: user=alpicola key="https://github.com/alpicola.keys"

@@ -1,0 +1,14 @@
+---
+- name: Install Kibana
+  yum:
+    name: kibana
+- name: Set server.host
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: "^#?\\s?server.host:"
+    line: "server.host: 0.0.0.0"
+- name: Enable and start Kibana
+  systemd:
+    name: kibana
+    state: started
+    enabled: yes

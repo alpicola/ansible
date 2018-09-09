@@ -1,0 +1,9 @@
+---
+- name: Install APM Server
+  yum:
+    name: apm-server
+- name: Enable and start APM Server
+  systemd:
+    name: apm-server
+    state: started
+    enabled: yes
