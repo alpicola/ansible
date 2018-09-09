@@ -2,6 +2,11 @@
 - name: Install APM Server
   yum:
     name: apm-server
+- name: Set host
+  lineinfile:
+    path: /etc/apm-server/apm-server.yml
+    regexp: "^  #?\\s?host:"
+    line: "  host: 0.0.0.0:8200"
 - name: Enable and start APM Server
   systemd:
     name: apm-server
